@@ -26,7 +26,18 @@ export default function MePage() {
         <Sidebar />
         <main className="w-full max-w-[680px] space-y-4">
           <h1 className="font-heading text-2xl">Edit Profile</h1>
-          {user ? <ProfileEditForm user={user} onSaved={load} /> : <p className="text-zinc-400">Loading...</p>}
+          {user ? (
+            <>
+              <div className="rounded-2xl border border-white/10 bg-[#161a22] p-4 text-sm text-zinc-400">
+                <span className="mr-4">{user.posts_count} posts</span>
+                <span className="mr-4">{user.followers_count} followers</span>
+                <span>{user.following_count} following</span>
+              </div>
+              <ProfileEditForm user={user} onSaved={load} />
+            </>
+          ) : (
+            <p className="text-zinc-400">Loading...</p>
+          )}
         </main>
       </div>
     </div>
